@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import pe.com.profind.R
 import pe.com.profind.activities.data.LoginRepository
 import pe.com.profind.activities.data.Result
 
-import pe.com.profind.activities.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

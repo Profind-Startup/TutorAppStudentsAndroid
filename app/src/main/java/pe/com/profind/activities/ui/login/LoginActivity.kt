@@ -15,9 +15,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import pe.com.profind.R
 import pe.com.profind.activities.MainActivity
-
-import pe.com.profind.activities.R
 
 class LoginActivity : AppCompatActivity() {
 
