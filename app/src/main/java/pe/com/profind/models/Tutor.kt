@@ -7,11 +7,9 @@ import com.google.gson.annotations.SerializedName
 
 data class Tutor(
     @SerializedName("id") val id: Int,
-    @SerializedName("student_id") val student_id: Int,
-    @SerializedName("tutor_id") val tutor_id: Int,
-    @SerializedName("reservation_date") val reservation_date: String,
-    @SerializedName("reservation_time_start") val reservation_time_start: String,
-    @SerializedName("reservation_time_end") val reservation_time_end: String,
-    @SerializedName("subject_id") val subject_id: String,
-    @SerializedName("payment_id") val payment_id: String
+    @SerializedName("user_id") val user_id: Int,
+    @SerializedName("academic_group_name") val academic_group_name: String,
+    @SerializedName("academic_group_foundation_date") val academic_group_foundation_date: String,
+    @SerializedName("academic_group_address") val academic_group_address: String,
+    @SerializedName("birth_date") val birth_date: String
 )
