@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.prototype_tutor.view.*
 import pe.com.profind.R
 import pe.com.profind.models.Tutor
 
@@ -25,8 +26,8 @@ class TutorAdapter(val postList: List<Tutor>, val context: Context) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        //holder.itemView.txtPostTitle.text = postList.get(position).reservation_date
-     //   holder.itemView.txtPostBody.text = postList.get(position).subject_id
+        holder.itemView.txtPostBody.text =  postList.get(position).academic_group_name
+        holder.itemView.txtPostTitle.text = postList.get(position).academic_group_address
 
     }
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
