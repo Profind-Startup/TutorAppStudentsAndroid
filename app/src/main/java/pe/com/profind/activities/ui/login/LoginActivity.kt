@@ -17,6 +17,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import pe.com.profind.R
 import pe.com.profind.activities.MainActivity
+import pe.com.profind.activities.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -95,6 +96,14 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+        }
+
+
+        val btn_click_me = findViewById(R.id.btnRegistro) as Button
+// set on-click listener
+        btn_click_me.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            this.startActivity(intent)
         }
     }
 
