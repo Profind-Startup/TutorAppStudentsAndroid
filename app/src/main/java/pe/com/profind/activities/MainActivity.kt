@@ -1,7 +1,9 @@
 package pe.com.profind.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,9 +24,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
+
         rvTutors.layoutManager =  LinearLayoutManager(this)
 
         getTutors()
+
+        val btn_click_me = findViewById(R.id.btnViewTutor) as Button
+// set on-click listener
+        btn_click_me.setOnClickListener {
+            val intent = Intent(this, ViewTutorActivity::class.java)
+            this.startActivity(intent)
+        }
+
     }
 
     private fun getTutors() {
