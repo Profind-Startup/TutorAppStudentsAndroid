@@ -27,4 +27,9 @@
     <string name="str_telephone">Telefono</string>
     <string name="str_address">Dirección</string>
     <string name="str_academic_group">Grupo Académico</string>
+
+    <string name="titlulo_pickers">Obtener fecha y hora</string>
+
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
 </resources>

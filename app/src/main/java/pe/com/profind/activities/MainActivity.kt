@@ -23,9 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         rvTutors.layoutManager =  LinearLayoutManager(this)
 
         getTutors()
