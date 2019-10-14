@@ -15,4 +15,16 @@
     <string name="tutorButton">Ver tutor</string>
     <string name="btnReserv">Reservar</string>
     <string name="specialities">Especialidades</string>
+    <string name="textRegister">Registrarme</string>
+    <string name="txtAcademicGroupName">Grupo Academico</string>
+    <string name="txtDateCreation">Fecha de creacion</string>
+    <string name="txtDate">Fecha de Nacimiento</string>
+    <string name="txtSpecialities">Especialidades</string>
+    <string name="stg_password">Contraseña</string>
+    <string name="str_user">Usuario</string>
+    <string name="str_hint">Nombres</string>
+    <string name="str_dni">DNI</string>
+    <string name="str_telephone">Telefono</string>
+    <string name="str_address">Dirección</string>
+    <string name="str_academic_group">Grupo Académico</string>
 </resources>
