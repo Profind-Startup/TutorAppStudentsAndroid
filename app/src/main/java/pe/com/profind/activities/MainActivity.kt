@@ -19,12 +19,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         rvTutors.layoutManager =  LinearLayoutManager(this)
-
+        
         getTutors()
 
         val btn_click_me = findViewById(R.id.btnViewTutor) as Button
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         var response = postsApi.getAllTutors()
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
-            {   rvTutors.adapter = TutorAdapter(it, this)
+            {   rvTutors.adapter = TutorAdapter(it)
                 // no op
             },
             { throwable ->
