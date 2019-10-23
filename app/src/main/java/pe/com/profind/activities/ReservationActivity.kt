@@ -16,13 +16,6 @@ import android.view.View
 import android.widget.TimePicker
 import android.app.TimePickerDialog
 
-
-
-
-
-
-
-
 class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
     private val CERO = "0"
@@ -70,8 +63,14 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             R.id.ib_obtener_hora -> obtenerHora()
         }
+        when (v.id) {
+            R.id.seleccionar_subject -> actualizarSubjects()
+        }
     }
 
+    private fun actualizarSubjects() {
+
+    }
     private fun obtenerFecha() {
         val recogerFecha = DatePickerDialog(
             this,
