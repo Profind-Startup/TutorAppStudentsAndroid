@@ -28,8 +28,13 @@
     <string name="str_address">Dirección</string>
     <string name="str_academic_group">Grupo Académico</string>
 
-    <string name="titlulo_pickers">Obtener fecha y hora</string>
+    <string name="titlulo_pickers">Seleccionar fecha y hora</string>
 
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+    <string name="titulo_tema">Tema a seleccionar</string>
+    <string name="str_tema">tema</string>
+    <string name="str_commentary">Comentario adicional</string>
+    <string name="str_hint_commentary">Comentario</string>
+    <string name="str_btn_confirm_reserv">Confirmar Reserva</string>
 </resources>
