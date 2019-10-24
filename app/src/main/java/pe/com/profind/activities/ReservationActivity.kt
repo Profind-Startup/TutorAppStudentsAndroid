@@ -10,14 +10,34 @@ import android.app.Dialog
 import android.view.View
 import android.app.TimePickerDialog
 import android.widget.*
+import com.google.gson.GsonBuilder
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.exceptions.Exceptions
+import io.reactivex.internal.schedulers.IoScheduler
+import kotlinx.android.synthetic.main.activity_main.*
+import pe.com.profind.adapters.TutorAdapter
+import pe.com.profind.models.SubjectInfertace
+import pe.com.profind.models.TutorInterface
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.annotation.SuppressLint
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import pe.com.profind.models.Subject
+
 
 class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private var textView: TextView? = null
     private var dialogBtn: ImageButton? = null
-    private val myImageNameList =
-        arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
+   // private var myImageNameList =
+   //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
+
+    var myImageNameList = mutableListOf("subject")
 
     private val CERO = "0"
     private val BARRA = "/"
@@ -38,6 +58,41 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
     var etHora: EditText? = null
     var ibObtenerHora: ImageButton? = null
+
+    @SuppressLint("CheckResult")
+    private fun getSubjects() {
+        val retrofit = Retrofit.Builder().addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().create()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl("http://tutorapp.somee.com/api/").build()
+
+        val postsApi = retrofit.create(SubjectInfertace::class.java)
+
+        var response = postsApi.getAllSubjectsByTutor(1)
+
+
+        response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
+            {
+
+
+                for (Subject in it) {
+                    myImageNameList.add(Subject.name)
+                    
+                }
+                // no op
+
+            },
+            { throwable ->
+                // throw new RuntimeException("Error observing strings", throwable);
+                // instead of throwing, just propagate
+                Exceptions.propagate(throwable)
+            })
+
+
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation)
