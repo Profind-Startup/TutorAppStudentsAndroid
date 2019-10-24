@@ -16,8 +16,6 @@ import io.reactivex.exceptions.Exceptions
 import io.reactivex.internal.schedulers.IoScheduler
 import kotlinx.android.synthetic.main.activity_main.*
 import pe.com.profind.adapters.TutorAdapter
-import pe.com.profind.models.SubjectInfertace
-import pe.com.profind.models.TutorInterface
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,8 +26,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_view_tutor.*
-import pe.com.profind.models.Subject
-import pe.com.profind.models.Tutor
+import pe.com.profind.models.*
 
 
 class ReservationActivity : AppCompatActivity(), View.OnClickListener {
@@ -40,8 +37,12 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
    // private var myImageNameList =
    //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
-    var myImageNameList = mutableListOf("subject")
+    var myImageNameList = mutableListOf("NA")
+    var myIds = mutableListOf(0)
+
+
     var tutorid = 0
+
     private val CERO = "0"
     private val BARRA = "/"
     private val DOS_PUNTOS = ":"
@@ -62,6 +63,22 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
     var etHora: EditText? = null
     var ibObtenerHora: ImageButton? = null
 
+    //var Reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()).toString(),"1")
+
+
+    fun obtenerId(): Int
+    {
+        var index = 0
+        for(String in myImageNameList)
+        {
+
+            if(String == etFecha!!.text.toString())
+            return index
+            else
+                index++
+        }
+        return 0
+    }
     @SuppressLint("CheckResult")
     private fun getSubjects() {
         val retrofit = Retrofit.Builder().addConverterFactory(
@@ -76,12 +93,19 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         var response = postsApi.getAllSubjectsByTutor(tutorid)
 
 
+         myImageNameList.clear()
+         myIds.clear()
+
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
             {
 
                 for (Subject in it) {
+
                     myImageNameList.add(Subject.name)
-                    Log.d("XD",Subject.name)
+
+                    myIds.add(Subject.id)
+
+
                 }
                 // no op
 
