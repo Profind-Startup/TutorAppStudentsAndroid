@@ -26,7 +26,10 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.annotation.SuppressLint
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.util.Log
+import kotlinx.android.synthetic.main.activity_view_tutor.*
 import pe.com.profind.models.Subject
+import pe.com.profind.models.Tutor
 
 
 class ReservationActivity : AppCompatActivity(), View.OnClickListener {
@@ -38,7 +41,7 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
    //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
     var myImageNameList = mutableListOf("subject")
-
+    var tutorid = 0
     private val CERO = "0"
     private val BARRA = "/"
     private val DOS_PUNTOS = ":"
@@ -69,16 +72,16 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
         val postsApi = retrofit.create(SubjectInfertace::class.java)
 
-        var response = postsApi.getAllSubjectsByTutor(1)
+
+        var response = postsApi.getAllSubjectsByTutor(tutorid)
 
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
             {
 
-
                 for (Subject in it) {
                     myImageNameList.add(Subject.name)
-                    
+                    Log.d("XD",Subject.name)
                 }
                 // no op
 
@@ -97,6 +100,11 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation)
 
+
+        intent?.extras?.apply {
+            tutorid = getInt("tutorId")
+
+        }
         etFecha = findViewById(R.id.et_mostrar_fecha_picker) as EditText
         //Widget ImageButton del cual usaremos el evento clic para obtener la fecha
         ibObtenerFecha = findViewById(R.id.ib_obtener_fecha) as ImageButton
@@ -116,11 +124,13 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
         dialogBtn!!.setOnClickListener(this)
 
+
+        getSubjects()
     }
 
 
     override fun onClick(v: View) {
-        when (v.getId()) {
+        when (v.id) {
             R.id.ib_obtener_fecha -> obtenerFecha()
 
         }
