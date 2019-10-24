@@ -1,22 +1,23 @@
 package pe.com.profind.activities
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import pe.com.profind.R
-import android.widget.ImageButton
-import android.widget.EditText
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import java.util.*
-import android.widget.DatePicker
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.view.View
-import android.widget.TimePicker
 import android.app.TimePickerDialog
+import android.widget.*
 
 class ReservationActivity : AppCompatActivity(), View.OnClickListener {
+
+
+    private var textView: TextView? = null
+    private var dialogBtn: ImageButton? = null
+    private val myImageNameList =
+        arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
     private val CERO = "0"
     private val BARRA = "/"
@@ -52,6 +53,14 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         ibObtenerHora = findViewById(R.id.ib_obtener_hora) as ImageButton
         //Evento setOnClickListener - clic
         ibObtenerHora!!.setOnClickListener(this)
+
+
+        textView = findViewById(R.id.et_selecccionar_subject)
+
+        dialogBtn = findViewById(R.id.seleccionar_subject)
+
+        dialogBtn!!.setOnClickListener(this)
+
     }
 
 
@@ -63,12 +72,45 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             R.id.ib_obtener_hora -> obtenerHora()
         }
+
         when (v.id) {
             R.id.seleccionar_subject -> actualizarSubjects()
         }
     }
 
+
     private fun actualizarSubjects() {
+
+        showDialog(this@ReservationActivity)
+    }
+
+    fun showDialog(activity: Activity) {
+
+        val dialog = Dialog(activity)
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_listview)
+
+        val btndialog = dialog.findViewById(R.id.btndialog) as Button
+        btndialog.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+
+                dialog.dismiss()
+            }
+        })
+
+        val listView = dialog.findViewById(R.id.listview) as ListView
+        val arrayAdapter = ArrayAdapter(this, R.layout.list_item,R.id.tv, myImageNameList)
+        listView.setAdapter(arrayAdapter)
+
+        listView.setOnItemClickListener(object : AdapterView.OnItemClickListener {
+            override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                textView!!.text = myImageNameList[position]
+                dialog.dismiss()
+            }
+        })
+
+        dialog.show()
 
     }
     private fun obtenerFecha() {
