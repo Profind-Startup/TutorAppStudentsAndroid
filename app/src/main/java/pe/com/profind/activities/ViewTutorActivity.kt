@@ -23,7 +23,7 @@ class ViewTutorActivity : AppCompatActivity() {
 // set on-click listener
         btn_click_me.setOnClickListener {
             val intent = Intent(this, ReservationActivity::class.java)
-            intent.putExtra("tutor", tutor as Serializable)
+            intent.putExtra("tutorId", tutor.id)
             it.context.startActivity(intent)
 
         }
