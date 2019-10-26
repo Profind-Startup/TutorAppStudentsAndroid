@@ -1,11 +1,7 @@
 package pe.com.profind.models
 
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.QueryMap
-
-
+import retrofit2.http.*
 
 
 interface ReservationInterface {
@@ -15,5 +11,15 @@ interface ReservationInterface {
 
     @GET("Tutors/{id}/Reservations")
     fun getAllReservationsByTutor(@Path("id") groupId: Int): Observable<List<Reservation>>
+
+
+    @GET("Students/{id}/Reservations")
+    fun getAllReservationsByStudents(@Path("id") groupId: Int): Observable<List<Reservation>>
+
+
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @POST("reservations")
+    fun postReservation(@Body reservation: Reservation): Observable<Reservation>
+
 
 }

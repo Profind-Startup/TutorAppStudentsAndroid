@@ -12,7 +12,7 @@
     <string name="tutorFindString">Busca un tutor segun el tema</string>
     <string name="RegisterText">Registrarme</string>
     <string name="Register">Registrarme</string>
-    <string name="tutorButton">Ver tutor</string>
+    <string name="ReservButton">Ver Reservas</string>
     <string name="btnReserv">Reservar</string>
     <string name="specialities">Especialidades</string>
     <string name="textRegister">Registrarme</string>
@@ -36,5 +36,5 @@
     <string name="str_tema">tema</string>
     <string name="str_commentary">Comentario adicional</string>
     <string name="str_hint_commentary">Comentario</string>
-    <string name="str_btn_confirm_reserv">Confirmar Reserva</string>
+    <string name="str_btn_confirm_reserv">Enviar Reserva</string>
 </resources>
