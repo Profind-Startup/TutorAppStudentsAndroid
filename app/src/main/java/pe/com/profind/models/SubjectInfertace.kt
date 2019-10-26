@@ -10,6 +10,6 @@ interface SubjectInfertace {
     @GET("subjects")
     fun getAllSubjects(): Observable<List<Subject>>
 
-    @GET("Tutors/{id}/Reservations/Subjects")
+    @GET("Tutors/{id}/Subjects")
     fun getAllSubjectsByTutor(@Path("id") groupId: Int): Observable<List<Subject>>
 }
