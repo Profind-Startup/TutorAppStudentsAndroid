@@ -1,53 +1,47 @@
 package pe.com.profind.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.exceptions.Exceptions
 import io.reactivex.internal.schedulers.IoScheduler
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_view_reservation.*
 import pe.com.profind.R
-import pe.com.profind.adapters.TutorAdapter
-import pe.com.profind.models.TutorInterface
+import pe.com.profind.adapters.ViewReservationAdapter
+import pe.com.profind.models.ReservationInterface
+
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
-
+class ViewReservationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R
+            .layout.activity_view_reservation)
 
-        rvTutors.layoutManager =  LinearLayoutManager(this)
-        
-        getTutors()
+        rvReservations.layoutManager =  LinearLayoutManager(this)
 
-        val btn_click_me = findViewById(R.id.btnViewReserv) as Button
-// set on-click listener
-        btn_click_me.setOnClickListener {
-            val intent = Intent(this, ViewReservationActivity::class.java)
-            this.startActivity(intent)
-        }
-
+        getReservations()
     }
 
-    private fun getTutors() {
-        val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+    private fun getReservations() {
+
+        val retrofit = Retrofit.Builder().addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().create()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .baseUrl("http://tutorapp.somee.com/api/").build()
 
-        val postsApi = retrofit.create(TutorInterface::class.java)
+        val postsApi = retrofit.create(ReservationInterface::class.java)
 
-        var response = postsApi.getAllTutors()
+        var response = postsApi.getAllReservationsByStudents(1)
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
-            {   rvTutors.adapter = TutorAdapter(it)
+            {   rvReservations.adapter = ViewReservationAdapter(it, this)
                 // no op
             },
             { throwable ->
@@ -55,8 +49,6 @@ class MainActivity : AppCompatActivity() {
                 // instead of throwing, just propagate
                 Exceptions.propagate(throwable)
             })
-
-
 
     }
 }

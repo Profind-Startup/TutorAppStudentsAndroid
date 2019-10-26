@@ -25,6 +25,8 @@ import android.annotation.SuppressLint
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_reservation.*
 import kotlinx.android.synthetic.main.activity_view_tutor.*
 import pe.com.profind.models.*
 
@@ -34,6 +36,7 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
     private var textView: TextView? = null
     private var dialogBtn: ImageButton? = null
+    private var btnReserva: Button? =null
    // private var myImageNameList =
    //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
@@ -72,12 +75,12 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
         for(String in myImageNameList)
         {
 
-            if(String == etFecha!!.text.toString())
+            if(String == et_selecccionar_subject!!.text.toString())
             return index
             else
                 index++
         }
-        return 0
+        return index
     }
     @SuppressLint("CheckResult")
     private fun getSubjects() {
@@ -148,8 +151,30 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
         dialogBtn!!.setOnClickListener(this)
 
+        btnReserva = findViewById(R.id.btnEnvReserv)
 
+        btnReserva!!.setOnClickListener{
+
+            saveReservation()
+        }
         getSubjects()
+    }
+
+    private fun saveReservation() {
+        val retrofit = Retrofit.Builder().addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().create()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl("http://tutorapp.somee.com/api/").build()
+
+        val postsApi = retrofit.create(ReservationInterface::class.java)
+        var reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()),1)
+        postsApi.postReservation(reservation).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result -> Log.v("POSTED RESERVATION", "" ) },
+                { error -> Log.e("ERROR", error.message ) }
+            )
     }
 
 
@@ -215,7 +240,7 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
                 val mesFormateado =
                     if (mesActual < 10) CERO + mesActual.toString() else mesActual.toString()
                 //Muestro la fecha con el formato deseado
-                etFecha!!.setText(diaFormateado + BARRA + mesFormateado + BARRA + year)
+                etFecha!!.setText(year.toString() + BARRA + mesFormateado + BARRA + diaFormateado)
             },
             //Estos valores deben ir en ese orden, de lo contrario no mostrara la fecha actual
             /**
@@ -244,7 +269,8 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
                     AM_PM = "p.m."
                 }
                 //Muestro la hora con el formato deseado
-                etHora!!.setText("$horaFormateada$DOS_PUNTOS$minutoFormateado $AM_PM")
+               // etHora!!.setText("$horaFormateada$DOS_PUNTOS$minutoFormateado $AM_PM")
+                etHora!!.setText(hourOfDay.toString() +":" +minute.toString())
             },
             //Estos valores deben ir en ese orden
             //Al colocar en false se muestra en formato 12 horas y true en formato 24 horas
