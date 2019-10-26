@@ -25,6 +25,7 @@ import android.annotation.SuppressLint
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
+import kotlinx.android.synthetic.main.activity_reservation.*
 import kotlinx.android.synthetic.main.activity_view_tutor.*
 import pe.com.profind.models.*
 
@@ -34,8 +35,6 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
     private var textView: TextView? = null
     private var dialogBtn: ImageButton? = null
-   // private var myImageNameList =
-   //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
     var myImageNameList = mutableListOf("NA")
     var myIds = mutableListOf(0)
@@ -63,7 +62,6 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
     var etHora: EditText? = null
     var ibObtenerHora: ImageButton? = null
 
-    //var Reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()).toString(),"1")
 
 
     fun obtenerId(): Int
@@ -148,6 +146,10 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
         dialogBtn!!.setOnClickListener(this)
 
+        btnReservar!!.setOnClickListener{
+            var Reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()).toString(),"1")
+
+        }
 
         getSubjects()
     }
