@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val btn_click_me = findViewById(R.id.btnViewTutor) as Button
 // set on-click listener
         btn_click_me.setOnClickListener {
-            val intent = Intent(this, SendedReservationsActivity::class.java)
+            val intent = Intent(this, ViewTutorActivity::class.java)
             this.startActivity(intent)
         }
 
