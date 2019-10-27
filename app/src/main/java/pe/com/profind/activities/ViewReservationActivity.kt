@@ -2,6 +2,7 @@ package pe.com.profind.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -44,10 +45,7 @@ class ViewReservationActivity : AppCompatActivity() {
             {   rvReservations.adapter = ViewReservationAdapter(it, this)
                 // no op
             },
-            { throwable ->
-                // throw new RuntimeException("Error observing strings", throwable);
-                // instead of throwing, just propagate
-                Exceptions.propagate(throwable)
+            { error -> Log.e("ERROR", error.message )
             })
 
     }

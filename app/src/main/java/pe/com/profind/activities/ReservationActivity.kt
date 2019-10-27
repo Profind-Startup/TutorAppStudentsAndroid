@@ -37,8 +37,6 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
     private var textView: TextView? = null
     private var dialogBtn: ImageButton? = null
     private var btnReserva: Button? =null
-   // private var myImageNameList =
-   //     arrayOf("Subject1", "Subject2", "Subject3", "Subject4", "Subject5", "Subject6", "Subject7", "Subject8")
 
     var myImageNameList = mutableListOf("NA")
     var myIds = mutableListOf(0)
@@ -113,10 +111,7 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
                 // no op
 
             },
-            { throwable ->
-                // throw new RuntimeException("Error observing strings", throwable);
-                // instead of throwing, just propagate
-                Exceptions.propagate(throwable)
+            { error -> Log.e("ERROR", error.message )
             })
 
 
