@@ -10,8 +10,10 @@ import io.reactivex.exceptions.Exceptions
 import io.reactivex.internal.schedulers.IoScheduler
 import kotlinx.android.synthetic.main.activity_view_reservation.*
 import pe.com.profind.R
+import pe.com.profind.activities.data.SharedPreference
 import pe.com.profind.adapters.ViewReservationAdapter
 import pe.com.profind.models.ReservationInterface
+import pe.com.profind.models.Student
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -39,7 +41,9 @@ class ViewReservationActivity : AppCompatActivity() {
 
         val postsApi = retrofit.create(ReservationInterface::class.java)
 
-        var response = postsApi.getAllReservationsByStudents(1)
+        val sp = SharedPreference(this)
+
+        var response = postsApi.getAllReservationsByStudents(sp.getValueInt("student_id"))
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
             {   rvReservations.adapter = ViewReservationAdapter(it, this)
