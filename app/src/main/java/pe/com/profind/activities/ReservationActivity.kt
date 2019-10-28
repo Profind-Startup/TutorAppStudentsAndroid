@@ -28,6 +28,7 @@ import android.util.Log
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_reservation.*
 import kotlinx.android.synthetic.main.activity_view_tutor.*
+import pe.com.profind.activities.data.SharedPreference
 import pe.com.profind.models.*
 
 
@@ -63,8 +64,6 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
 
     var etHora: EditText? = null
     var ibObtenerHora: ImageButton? = null
-
-    //var Reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()).toString(),"1")
 
 
     fun obtenerId(): Int
@@ -163,11 +162,14 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
             .baseUrl("http://tutorapp.somee.com/api/").build()
 
         val postsApi = retrofit.create(ReservationInterface::class.java)
-        var reservation = Reservation(1,1,tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()),1)
+        val sp = SharedPreference(this)
+        var reservation = Reservation(1,sp.getValueInt("student_id"),tutorid, etFecha!!.text.toString() ,etHora!!.text.toString(), etHora!!.text.toString(),myIds.elementAt(obtenerId()),1)
         postsApi.postReservation(reservation).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> Log.v("POSTED RESERVATION", "" ) },
+                { result -> Log.v("POSTED RESERVATION", "" )
+                finish()
+                },
                 { error -> Log.e("ERROR", error.message ) }
             )
     }
