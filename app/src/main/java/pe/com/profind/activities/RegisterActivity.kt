@@ -133,7 +133,7 @@ class RegisterActivity : AppCompatActivity() {
 
                         val intent = Intent(this, MainActivity::class.java)
                         this.startActivity(intent)
-
+                        finish()
                     }
                 },
                 { error -> Log.e("ERROR", error.message )
