@@ -60,8 +60,8 @@ class ViewReservationAdapter(val postList: List<Reservation>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.itemView.txtPostTitle.text = postList.get(position).reservation_date
-        holder.itemView.txtPostBody.text = postList.get(position).subject_id.toString()
+        holder.itemView.txtPostTitle.text = "Día de Reserva: " + postList.get(position).reservation_date
+        holder.itemView.txtPostBody.text = "Tema Reservado" +  postList.get(position).subject_id.toString()
         holder.bindTo(postList.get(position))
     }
 
