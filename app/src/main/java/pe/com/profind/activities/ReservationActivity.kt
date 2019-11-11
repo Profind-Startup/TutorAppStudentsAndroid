@@ -267,7 +267,7 @@ class ReservationActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 //Muestro la hora con el formato deseado
                // etHora!!.setText("$horaFormateada$DOS_PUNTOS$minutoFormateado $AM_PM")
-                etHora!!.setText(hourOfDay.toString() +":" +minute.toString())
+                etHora!!.setText(hourOfDay.toString() +":" +minutoFormateado)
             },
             //Estos valores deben ir en ese orden
             //Al colocar en false se muestra en formato 12 horas y true en formato 24 horas

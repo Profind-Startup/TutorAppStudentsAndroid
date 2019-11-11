@@ -10,18 +10,18 @@
         android:id="@+id/txtTutorNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="80dp"
-        android:text="Juan Manuel"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="17dp"
+        android:text="Nombres"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/txtTutorLastnames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:text="Gomez Zapata"
+        android:layout_marginStart="50dp"
+        android:text="Apellidos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTutorNames" />
 
@@ -29,9 +29,7 @@
         android:id="@+id/btnReserv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="77dp"
+        android:layout_marginTop="80dp"
         android:text="@string/btnReserv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -43,21 +41,30 @@
         android:layout_height="134dp"
         android:layout_marginStart="53dp"
         android:layout_marginTop="22dp"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTutorLastnames"
-        tools:srcCompat="@mipmap/ic_launcher" />
+        tools:src="@tools:sample/avatars"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/txtSpecialities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="104dp"
         android:text="@string/specialities"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTutorNames"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginEnd="104dp"
+        android:text="@string/specialities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSpecialities" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -69,5 +76,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/Tutorname"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/academicgroupAddres"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

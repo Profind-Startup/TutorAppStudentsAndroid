@@ -21,4 +21,23 @@
         android:textSize="22sp"
         android:textStyle="bold" />
 
+    <TextView
+
+        android:id="@+id/txtTutorNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:id="@+id/txtTutorLastNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
 </LinearLayout>
