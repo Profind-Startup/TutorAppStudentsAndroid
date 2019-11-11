@@ -16,6 +16,9 @@ interface ReservationInterface {
     @GET("Students/{id}/Reservations")
     fun getAllReservationsByStudents(@Path("id") groupId: Int): Observable<List<Reservation>>
 
+    @GET("Reservations/{id}/details")
+    fun getReservationDetails(@Path("id") groupId: Int): Observable<ReservationDetails>
+
 
     @Headers("Content-Type: application/json;charset=utf-8")
     @POST("reservations")
