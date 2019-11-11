@@ -178,11 +178,8 @@ class LoginActivity : AppCompatActivity() {
             {
 
 
-                if(it==null) {
+                if(it==null)
                     bool = false
-                    Toast.makeText(applicationContext, "Usuario o contraseña invalidos", Toast.LENGTH_SHORT).show()
-
-                }
                     else{
                     val sp = SharedPreference(this)
                     sp.save("student_id",it.id)
@@ -192,7 +189,6 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     this.startActivity(intent)
                 }
-
                 // no op
 
             },

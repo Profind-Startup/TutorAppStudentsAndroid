@@ -1,10 +1,7 @@
 package pe.com.profind.models
 
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface UserInterface {
 
@@ -17,4 +14,7 @@ interface UserInterface {
     @Headers("Content-Type: application/json;charset=utf-8")
     @POST("users")
     fun createUser(@Body user: User): Observable<User>
+
+    @GET("users/{id}")
+    fun getUserById(@Path("id") groupId: Int): Observable<User>
 }

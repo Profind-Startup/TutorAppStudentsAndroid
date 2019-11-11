@@ -37,4 +37,6 @@
     <string name="str_commentary">Comentario adicional</string>
     <string name="str_hint_commentary">Comentario</string>
     <string name="str_btn_confirm_reserv">Enviar Reserva</string>
+    <string name="Tutorname">Nombre del tutor:</string>
+    <string name="academicgroupAddres">Grupo Acad. y Dirección:</string>
 </resources>
