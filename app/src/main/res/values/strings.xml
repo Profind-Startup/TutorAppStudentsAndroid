@@ -27,6 +27,11 @@
     <string name="str_telephone">Telefono</string>
     <string name="str_address">Dirección</string>
     <string name="str_academic_group">Grupo Académico</string>
+    <string name="str_find_tutor">Buscar Tutor</string>
+    <string name="str_desc_tutor">Detalles del Tutor</string>
+    <string name="str_reservas">Mis reservas</string>
+    <string name="str_about_reservas">Acerca de la reserva</string>
+    <string name="str_add_reserva">Agregar reserva</string>
 
     <string name="titlulo_pickers">Seleccionar fecha y hora</string>
 

@@ -11,21 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.DetailReservationActivity"></activity>
-        <activity android:name=".activities.ViewReservationActivity" />
-        <activity android:name=".activities.ReservationActivity" />
-        <activity android:name=".activities.ViewTutorActivity" />
+        <activity android:name=".activities.DetailReservationActivity" android:label="@string/str_about_reservas"/>
+        <activity android:name=".activities.ViewReservationActivity" android:label="@string/str_reservas"/>
+        <activity android:name=".activities.ReservationActivity"  android:label="@string/str_add_reserva"/>
+        <activity android:name=".activities.ViewTutorActivity"  android:label="@string/str_desc_tutor"/>
         <activity android:name=".activities.RegisterActivity" />
         <activity
             android:name=".activities.ui.login.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" android:label="@string/str_find_tutor"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.MainActivity" android:label="@string/str_find_tutor"/>
     </application>
 
 </manifest>
