@@ -30,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="25dp"
         android:text="@string/btnReserv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -41,11 +42,12 @@
         android:layout_height="134dp"
         android:layout_marginStart="53dp"
         android:layout_marginTop="22dp"
-        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_person_pin_black_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTutorLastnames"
-        tools:src="@tools:sample/avatars"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@drawable/ic_person_pin_black_24dp"
+        tools:srcCompat="@drawable/ic_person_pin_black_24dp" />
 
     <TextView
         android:id="@+id/txtSpecialities"
@@ -97,6 +99,19 @@
         android:text="@string/academicgroupAddres"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="371dp"
+        android:layout_height="293dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="18dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
